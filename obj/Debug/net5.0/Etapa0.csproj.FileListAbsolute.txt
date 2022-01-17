@@ -1,0 +1,16 @@
+D:\Projects\Platzi\Etapa0\bin\Debug\net5.0\Etapa0.exe
+D:\Projects\Platzi\Etapa0\bin\Debug\net5.0\Etapa0.deps.json
+D:\Projects\Platzi\Etapa0\bin\Debug\net5.0\Etapa0.runtimeconfig.json
+D:\Projects\Platzi\Etapa0\bin\Debug\net5.0\Etapa0.runtimeconfig.dev.json
+D:\Projects\Platzi\Etapa0\bin\Debug\net5.0\Etapa0.dll
+D:\Projects\Platzi\Etapa0\bin\Debug\net5.0\ref\Etapa0.dll
+D:\Projects\Platzi\Etapa0\bin\Debug\net5.0\Etapa0.pdb
+D:\Projects\Platzi\Etapa0\obj\Debug\net5.0\Etapa0.csproj.AssemblyReference.cache
+D:\Projects\Platzi\Etapa0\obj\Debug\net5.0\Etapa0.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Platzi\Etapa0\obj\Debug\net5.0\Etapa0.AssemblyInfoInputs.cache
+D:\Projects\Platzi\Etapa0\obj\Debug\net5.0\Etapa0.AssemblyInfo.cs
+D:\Projects\Platzi\Etapa0\obj\Debug\net5.0\Etapa0.csproj.CoreCompileInputs.cache
+D:\Projects\Platzi\Etapa0\obj\Debug\net5.0\Etapa0.dll
+D:\Projects\Platzi\Etapa0\obj\Debug\net5.0\ref\Etapa0.dll
+D:\Projects\Platzi\Etapa0\obj\Debug\net5.0\Etapa0.pdb
+D:\Projects\Platzi\Etapa0\obj\Debug\net5.0\Etapa0.genruntimeconfig.cache
