@@ -6,7 +6,7 @@ namespace CoreEscuela.util
 {
     public static class Printer
     {
-        public static void DibujarLinea(int tam = 10)
+        public static void DrawLine(int tam = 10)
         {
         Console.WriteLine("".PadLeft(tam, '='));
         }
@@ -14,9 +14,9 @@ namespace CoreEscuela.util
         public static void WriteTitle(string titulo)
         {
             var tamano = titulo.Length + 4;
-            DibujarLinea(tamano);
+            DrawLine(tamano);
             Console.WriteLine($"| {titulo} |");
-            DibujarLinea(tamano);
+            DrawLine(tamano);
         }
 
         public static void Beep(int hz = 2000, int tiempo = 500, int cantidad = 1)

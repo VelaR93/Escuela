@@ -7,7 +7,7 @@ using CoreEscuela.util;
 
 namespace CoreEscuela
 {
-    public class EscuelaEngine
+    public sealed class EscuelaEngine
     {
          //Random rnd = new Random();
         
@@ -43,14 +43,14 @@ namespace CoreEscuela
                         var rnd = new Random();
                         for (int i = 0; i < 5;i++)
                         {
-                            var ev = new Evaluaciones
+                            var ev = new Evaluacion
                             {
                                 Nombre = $"{asignatura.Nombre} Eva#{i + 1}",
                                 Alumno = alumno,
                                 Asignatura = asignatura,
                                 Nota = (float)((rnd.NextDouble()) * 5),
                             };
-                            Alumnos.Evaluaciones.Add(ev);
+                            alumno.Evaluaciones.Add(ev);
                         }
                     }
                 }
