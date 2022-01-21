@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoreEscuela.Entidades;
 using CoreEscuela.util;
 
@@ -16,47 +17,13 @@ namespace CoreEscuela
             //Printer.Beep();
             ImprimirCursosEscuela(engine.Escuela);
 
-            // var obj = new ObjetoEscuelaBase();
-
-            Printer.DrawLine(20);
-            Printer.DrawLine(20);
-            Printer.DrawLine(20);
-            Printer.WriteTitle("Pruebas de Polimorfismo");
-
-            var alumnoTest = new Alumno { Nombre = "Julio Varela" };
-
-            Printer.WriteTitle("Alumno");
-            Console.WriteLine($"Alumno: {alumnoTest.Nombre}");
-            Console.WriteLine($"Alumno.Unique: {alumnoTest.UniqueID}");
-            Console.WriteLine($"Alumno.GetType: {alumnoTest.GetType()}");
-            
-            
-            ObjetoEscuelaBase ob = alumnoTest;
-            Printer.WriteTitle("ObjetoEscuela");
-            Console.WriteLine($"ObjetoEscuelaBase: {ob.Nombre}");
-            Console.WriteLine($"ObjetoEscuelaBase.Unique: {ob.UniqueID}");
-            Console.WriteLine($"ObjetoEscuelaBase.GetType: {ob.GetType()}");
-
-
-            var evaluación = new Evaluacion() { Nombre = "Evaluación de math", Nota = 4.5f, };
-            Printer.WriteTitle("evaluación");
-            Console.WriteLine($"evaluación: {evaluación.Nombre}");
-            Console.WriteLine($"evaluación.Unique: {evaluación.UniqueID}");
-            Console.WriteLine($"evaluación.Nota: {evaluación.Nota}");
-            Console.WriteLine($"evaluación.GetType: {evaluación.GetType()}");
-
-            // ob = evaluación;
-            // Printer.WriteTitle("ObjetoEscuela");
-            // Console.WriteLine($"ObjetoEscuelaBase: {ob.Nombre}");
-            // Console.WriteLine($"ObjetoEscuelaBase.Unique: {ob.UniqueID}");
-            // Console.WriteLine($"ObjetoEscuelaBase.GetType: {ob.GetType()}");
-
-            if (ob is Alumno)
-            {
-                Alumno alumnoRecuperdao = (Alumno) ob;
-            }
-            //alumnoTest = (Alumno) (ObjetoEscuelaBase) evaluación;
-
+            int dummy = 0;
+            var listaObjetos = engine.GetObjetosEscuela(
+            out int conteoEvaluaciones,
+            out dummy,
+            out dummy,
+            out dummy
+            );
 
         }
 

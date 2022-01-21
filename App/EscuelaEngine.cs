@@ -9,8 +9,8 @@ namespace CoreEscuela
 {
     public sealed class EscuelaEngine
     {
-         //Random rnd = new Random();
-        
+        //Random rnd = new Random();
+
         public Escuela Escuela { get; set; }
         public Alumno Alumnos = new Alumno();
 
@@ -31,8 +31,91 @@ namespace CoreEscuela
             CargarEvaluaciones();
 
 
+
         }
-        private void CargarEvaluaciones()
+
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true)
+            {
+            return GetObjetosEscuela(out int dummy, out dummy, out dummy, out dummy);
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+            out int conteoEvaluaciones,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true)
+            {
+            return GetObjetosEscuela(out conteoEvaluaciones, out int dummy, out dummy, out dummy);
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+            out int conteoEvaluaciones,
+            out int conteoAlumnos,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true)
+            {
+            return GetObjetosEscuela(out conteoEvaluaciones, out conteoAlumnos, out int dummy, out dummy);
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+            out int conteoEvaluaciones,
+            out int conteoAlumnos,
+            out int conteoAsignaturas,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true)
+            {
+            return GetObjetosEscuela(out conteoEvaluaciones, out conteoAlumnos, out conteoAsignaturas, out int dummy);
+        }
+
+
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+            out int conteoEvaluaciones,
+            out int conteoAlumnos,
+            out int conteoAsignaturas,
+            out int conteoCursos,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true)
+        {
+            conteoEvaluaciones = conteoAlumnos = conteoAsignaturas = 0;
+
+            var listaobj = new List<ObjetoEscuelaBase>();
+            listaobj.Add(Escuela);
+            if (traeCursos) listaobj.AddRange(Escuela.Cursos);
+            conteoCursos = Escuela.Cursos.Count;
+            foreach (var curso in Escuela.Cursos)
+            {
+                conteoAsignaturas += curso.Asignaturas.Count;
+                conteoAlumnos += curso.Alumnos.Count;
+
+                if (traeAsignaturas) listaobj.AddRange(curso.Asignaturas);
+                if (traeAlumnos) listaobj.AddRange(curso.Alumnos);
+                if (traeEvaluaciones)
+                    foreach (var alum in curso.Alumnos)
+                    {
+                        //El contador de evaluaciones va aquí porque las evaluaciones le pertenecen a alumno, y el foreach vigente es el que recorre la colección de alumnos.
+                        listaobj.AddRange(alum.Evaluaciones);
+                        conteoEvaluaciones += alum.Evaluaciones.Count;
+                    }
+            }
+
+
+            return (listaobj);
+        }
+    
+
+    #region Métodos de carga
+    private void CargarEvaluaciones()
         {
             foreach (var curso in Escuela.Cursos)
             {
@@ -55,7 +138,9 @@ namespace CoreEscuela
                     }
                 }
             }
+            
         }
+
      
       
         private void CargarAsignaturas()
@@ -119,6 +204,8 @@ namespace CoreEscuela
 
 
             }
+
+        #endregion
     }
 
 }
