@@ -16,14 +16,17 @@ namespace CoreEscuela
             Printer.WriteTitle("¡B I E N V E N I D O S   A   L A   E S C U E L A !");
             //Printer.Beep();
             ImprimirCursosEscuela(engine.Escuela);
+            Dictionary<int, string> diccionario = new Dictionary<int, string>();
 
-            int dummy = 0;
-            var listaObjetos = engine.GetObjetosEscuela(
-            out int conteoEvaluaciones,
-            out dummy,
-            out dummy,
-            out dummy
-            );
+            diccionario.Add(10, "JuanK");
+            diccionario.Add(23, "Lorem Ipsum");
+
+            foreach (var keyValPair in diccionario)
+            {
+                Console.WriteLine($"key: {keyValPair.Key} Valor: {keyValPair.Value}");
+            }
+
+
 
         }
 

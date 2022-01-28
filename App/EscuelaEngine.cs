@@ -30,11 +30,21 @@ namespace CoreEscuela
             //CargarNota();
             CargarEvaluaciones();
 
-
-
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public Dictionary<string, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
+        {
+            var diccionario = new Dictionary<string, IEnumerable<ObjetoEscuelaBase>>();
+
+            diccionario.Add("Escuela", new[] {Escuela});
+            diccionario.Add("Cursos", Escuela.Cursos);
+            //diccionario.Add("Asignaturas", );
+            //diccionario.Add("Cursos", Escuela.Cursos[0]);
+
+            return diccionario;
+        }
+
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
             bool traeAsignaturas = true,
@@ -43,7 +53,7 @@ namespace CoreEscuela
             return GetObjetosEscuela(out int dummy, out dummy, out dummy, out dummy);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
             out int conteoEvaluaciones,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
@@ -53,7 +63,7 @@ namespace CoreEscuela
             return GetObjetosEscuela(out conteoEvaluaciones, out int dummy, out dummy, out dummy);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
             out int conteoEvaluaciones,
             out int conteoAlumnos,
             bool traeEvaluaciones = true,
@@ -64,7 +74,7 @@ namespace CoreEscuela
             return GetObjetosEscuela(out conteoEvaluaciones, out conteoAlumnos, out int dummy, out dummy);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
             out int conteoEvaluaciones,
             out int conteoAlumnos,
             out int conteoAsignaturas,
@@ -77,7 +87,7 @@ namespace CoreEscuela
         }
 
 
-        public List<ObjetoEscuelaBase> GetObjetosEscuela(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
             out int conteoEvaluaciones,
             out int conteoAlumnos,
             out int conteoAsignaturas,
@@ -107,10 +117,11 @@ namespace CoreEscuela
                         listaobj.AddRange(alum.Evaluaciones);
                         conteoEvaluaciones += alum.Evaluaciones.Count;
                     }
+            
             }
 
 
-            return (listaobj);
+            return (listaobj.AsReadOnly());
         }
     
 
