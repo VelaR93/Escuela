@@ -26,7 +26,7 @@ namespace CoreEscuela
                 Console.WriteLine($"key: {keyValPair.Key} Valor: {keyValPair.Value}");
             }
 
-
+            var dictmp = engine.GetDiccionarioObjetos();
 
         }
 
