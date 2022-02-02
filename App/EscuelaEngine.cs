@@ -32,13 +32,28 @@ namespace CoreEscuela
 
         }
 
+        public void ImprimirDiccionario(Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> dic)
+        {
+            foreach (var obj in dic)
+            {
+                Printer.WriteTitle(obj.Key.ToString());
+                Console.WriteLine(obj);
+
+                foreach (var val in obj.Value)
+                {
+                    Console.WriteLine($"{obj.Key.ToString()} {val}");
+                }
+            }
+        }
+
         public Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
             var diccionario = new Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>();
 
             diccionario.Add(LlaveDiccionario.Escuela, new[] {Escuela});
             diccionario.Add(LlaveDiccionario.Curso, Escuela.Cursos.Cast<ObjetoEscuelaBase>());
-            diccionario[LlaveDiccionario.Alumno] = Escuela.Cursos.Cast<ObjetoEscuelaBase>();
+            //diccionario[LlaveDiccionario.Alumno] = Escuela.Cursos.Cast<ObjetoEscuelaBase>();
+
             var listtmpAsignatura = new List<Asignatura>();
             var listtmpAlumno = new List<Alumno>();
             var listtmpEvaluacion = new List<Evaluacion>();
@@ -50,11 +65,11 @@ namespace CoreEscuela
                 {
                     listtmpEvaluacion.AddRange(alum.Evaluaciones);
                 }
-                diccionario.Add(LlaveDiccionario.Asignatura, listtmpAsignatura.Cast<ObjetoEscuelaBase>());
-                diccionario.Add(LlaveDiccionario.Alumno, listtmpAlumno.Cast<ObjetoEscuelaBase>());
-                diccionario.Add(LlaveDiccionario.Evaluación, listtmpEvaluacion.Cast<ObjetoEscuelaBase>());
 
             }
+                diccionario.Add(LlaveDiccionario.Asignatura, listtmpAsignatura.Cast<ObjetoEscuelaBase>());
+                diccionario.Add(LlaveDiccionario.Evaluación, listtmpEvaluacion.Cast<ObjetoEscuelaBase>());
+                diccionario.Add(LlaveDiccionario.Alumno, listtmpAlumno.Cast<ObjetoEscuelaBase>());
             
             //diccionario.Add("Asignaturas", );
             //diccionario.Add("Cursos", Escuela.Cursos[0]); 
