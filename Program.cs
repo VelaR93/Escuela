@@ -25,6 +25,7 @@ namespace CoreEscuela
             var evalAsg = reporteador.GetListaAsignaturas();
             Printer.DrawLine();
             var evalXAsig = reporteador.GetDicEvalXAsig();
+            
 
 
         }
