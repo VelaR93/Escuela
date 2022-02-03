@@ -180,13 +180,13 @@ namespace CoreEscuela
     #region Métodos de carga
     private void CargarEvaluaciones()
         {
+        var rnd = new Random();
             foreach (var curso in Escuela.Cursos)
             {
                 foreach (var asignatura in curso.Asignaturas)
                 {
                     foreach (var alumno in curso.Alumnos)
                     {
-                        var rnd = new Random();
                         for (int i = 0; i < 5;i++)
                         {
                             var ev = new Evaluacion
@@ -194,7 +194,7 @@ namespace CoreEscuela
                                 Nombre = $"{asignatura.Nombre} Eva#{i + 1}",
                                 Alumno = alumno,
                                 Asignatura = asignatura,
-                                Nota = MathF.Round((float)((rnd.NextDouble()) * 5), 2),
+                                Nota = MathF.Round((float)rnd.NextDouble() * 10, 2),
                             };
                             alumno.Evaluaciones.Add(ev);
                         }
