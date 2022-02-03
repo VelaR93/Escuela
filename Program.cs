@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreEscuela.Entidades;
 using CoreEscuela.util;
+using CoreEscuela.App;
 
 namespace CoreEscuela
 {
@@ -16,28 +17,22 @@ namespace CoreEscuela
 
             engine.inicializar();
             Printer.WriteTitle("¡B I E N V E N I D O S   A   L A   E S C U E L A !");
-            //Printer.Beep();
-            //ImprimirCursosEscuela(engine.Escuela);
-            Dictionary<int, string> diccionario = new Dictionary<int, string>();
 
-            //diccionario.Add(10, "JuanK");
-            //diccionario.Add(23, "Lorem Ipsum");
+            Printer.DrawLine();
 
-            foreach (var keyValPair in diccionario)
-            {
-                Console.WriteLine($"key: {keyValPair.Key} Valor: {keyValPair.Value}");
-            }
+            var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
+            var evalList = reporteador.GetListaEvaluaciones();
+            var evalAsg = reporteador.GetListaAsignaturas();
+            Printer.DrawLine();
+            var evalXAsig = reporteador.GetDicEvalXAsig();
 
-            var dictmp = engine.GetDiccionarioObjetos();
-            System.Console.WriteLine("Inicia la impresión del dicc");
-            engine.ImprimirDiccionario(dictmp,true);
 
         }
 
         private static void AccionDelEvento(object sender, EventArgs e)
         {
             Printer.WriteTitle("Saliendo");
-            Printer.Beep(3000, 1000, 3);
+            Printer.Beep(700, 1000, 3);
             Printer.WriteTitle("Salió");
         }
 
