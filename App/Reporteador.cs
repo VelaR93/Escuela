@@ -88,7 +88,7 @@ namespace CoreEscuela.App
             foreach (var asigConEval in dicEvaXAsig)
             {
                 var promediosAlum = (from eval in asigConEval.Value
-                                    orderby eval.Nota
+                                    orderby eval.Nota descending
                                     group eval by new { eval.Alumno.UniqueID, eval.Alumno.Nombre }
                                     
                 into grupoEvaluacionesAlumno
@@ -103,6 +103,8 @@ namespace CoreEscuela.App
 
             return rta;
         }
+
+        
         
     }
 }
