@@ -27,6 +27,11 @@ namespace CoreEscuela.util
             }
         }
 
+        public static void PresioneENTER()
+        {
+            Console.WriteLine("Presione ENTER para continuar");
+        }
+
         
     }
 }

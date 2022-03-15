@@ -27,7 +27,39 @@ namespace CoreEscuela
             var evalXAsig = reporteador.GetDicEvalXAsig();
             var listaPromXAsignatura = reporteador.GetPromedioAlumXAsig(5);
 
+            Printer.WriteTitle("Captura de una Evaluación por consola");
+            var newEval = new Evaluacion();
+            string nombre;
+            float nota;
+            string notaString;
 
+            Console.WriteLine("Ingrese el nombre de la evaluación.");
+            Printer.PresioneENTER();
+            nombre = Console.ReadLine();
+
+            if(string.IsNullOrWhiteSpace(nombre))
+            {
+                throw new ArgumentException("El valor introducido debe ser distinto a vacío");
+            }
+            else
+            {
+                newEval.Nombre = nombre.ToLower();
+                Console.WriteLine("El nombre de la evaluación ha sido correcto");
+            }
+
+            Console.WriteLine("Ingrese la nota de la evaluación.");
+            Printer.PresioneENTER();
+            notaString = Console.ReadLine();
+
+            if(string.IsNullOrWhiteSpace(notaString))
+            {
+                throw new ArgumentException("El valor introducido debe ser distinto a vacío");
+            }
+            else
+            {
+                newEval.Nota = float.Parse(notaString);
+                Console.WriteLine("El valor de la evaluación ha sido correcto");
+            }
 
         }
 

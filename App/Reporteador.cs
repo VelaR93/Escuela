@@ -88,23 +88,24 @@ namespace CoreEscuela.App
             foreach (var asigConEval in dicEvaXAsig)
             {
                 var promediosAlum = (from eval in asigConEval.Value
-                                    orderby eval.Nota descending
-                                    group eval by new { eval.Alumno.UniqueID, eval.Alumno.Nombre }
-                                    
-                into grupoEvaluacionesAlumno
-                            select new AlumnoPromedio
-                            {
-                                AlumnoId = grupoEvaluacionesAlumno.Key.UniqueID,
-                                alumnoNombre = grupoEvaluacionesAlumno.Key.Nombre,
-                                promedio = grupoEvaluacionesAlumno.Average(evaluacion => evaluacion.Nota)
-                            }).Take(top);
+                                     orderby eval.Nota descending
+                                     group eval.Nota by new { eval.Alumno.UniqueID, eval.Alumno.Nombre }
+                                    into grupoEvaluacionesAlumno
+                                     //orderby grupoEvaluacionesAlumno
+
+                                     select new AlumnoPromedio
+                                     {
+                                         AlumnoId = grupoEvaluacionesAlumno.Key.UniqueID,
+                                         alumnoNombre = grupoEvaluacionesAlumno.Key.Nombre,
+                                         promedio = grupoEvaluacionesAlumno.Average(eval => eval)//.Nota)
+                                     }).Take(top);
                 rta.Add(asigConEval.Key, promediosAlum);
             }
 
             return rta;
         }
 
-        
-        
+
+
     }
 }
