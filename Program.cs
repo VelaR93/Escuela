@@ -31,6 +31,7 @@ namespace CoreEscuela
 
         }
 
+        
         private static void AccionDelEvento(object sender, EventArgs e)
         {
             Printer.WriteTitle("Saliendo");
