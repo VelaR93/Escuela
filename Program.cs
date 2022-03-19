@@ -27,6 +27,8 @@ namespace CoreEscuela
             var evalXAsig = reporteador.GetDicEvalXAsig();
             var listaPromXAsignatura = reporteador.GetPromedioAlumXAsig(5);
 
+            //Revisar la variable nota y por qué no se usa; se supone que debe asignársele la nota para llevar notaString a nota.
+
             Printer.WriteTitle("Captura de una Evaluación por consola");
             var newEval = new Evaluacion();
             string nombre;
@@ -39,7 +41,8 @@ namespace CoreEscuela
 
             if(string.IsNullOrWhiteSpace(nombre))
             {
-                throw new ArgumentException("El valor introducido debe ser distinto a vacío");
+                Printer.WriteTitle("El valor introducido debe ser distinto a vacío");
+                Console.WriteLine("Saliendo del programa");
             }
             else
             {
@@ -53,13 +56,40 @@ namespace CoreEscuela
 
             if(string.IsNullOrWhiteSpace(notaString))
             {
-                throw new ArgumentException("El valor introducido debe ser distinto a vacío");
+                Printer.WriteTitle("El valor introducido debe ser distinto a vacío");
+                Console.WriteLine("Saliendo del programa");
             }
             else
             {
-                newEval.Nota = float.Parse(notaString);
+                try
+                {
+                    newEval.Nota = float.Parse(notaString);
+                    if (newEval.Nota<0 || newEval.Nota>10)
+                    {
+                        throw new ArgumentOutOfRangeException("La nota debe estar entre 0 y 10");
+                    }
+                    Console.WriteLine("La nota fue capturada correctamente");
+                }
+                catch(ArgumentOutOfRangeException arge)
+                {
+                    Console.WriteLine(arge.Message);
+                }
+                catch (Exception)
+                {
+                    Printer.WriteTitle("El valor de la nota no parece ser un número válido");
+                    Console.WriteLine("Saliendo del programa");
+                }
+                finally
+                {
+                    Printer.WriteTitle("FINALMENTE");
+                    Printer.Beep(2500, 500, 3);
+                }
+
+
                 Console.WriteLine("El valor de la evaluación ha sido correcto");
             }
+
+            
 
         }
 
