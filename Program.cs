@@ -54,13 +54,13 @@ namespace CoreEscuela
             Printer.PresioneENTER();
             notaString = Console.ReadLine();
 
-            if(string.IsNullOrWhiteSpace(notaString))
-            {
-                Printer.WriteTitle("El valor introducido debe ser distinto a vacío");
-                Console.WriteLine("Saliendo del programa");
-            }
-            else
-            {
+            // if(string.IsNullOrWhiteSpace(notaString))
+            // {
+            //     Printer.WriteTitle("El valor introducido debe ser distinto a vacío");
+            //     Console.WriteLine("Saliendo del programa");
+            // }
+            // else
+            // {
                 try
                 {
                     newEval.Nota = float.Parse(notaString);
@@ -74,20 +74,21 @@ namespace CoreEscuela
                 {
                     Console.WriteLine(arge.Message);
                 }
-                catch (Exception)
-                {
-                    Printer.WriteTitle("El valor de la nota no parece ser un número válido");
-                    Console.WriteLine("Saliendo del programa");
-                }
                 finally
                 {
                     Printer.WriteTitle("FINALMENTE");
                     Printer.Beep(2500, 500, 3);
                 }
+                // catch (Exception)
+                // {
+                //     Printer.WriteTitle("El valor de la nota no parece ser un número válido");
+                //     Console.WriteLine("Saliendo del programa");
+                // }
+                
 
 
                 Console.WriteLine("El valor de la evaluación ha sido correcto");
-            }
+           // }
 
             
 
